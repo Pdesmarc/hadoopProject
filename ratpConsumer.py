@@ -5,7 +5,7 @@ import json
 
 client = InsecureClient('http://sandbox-hdp.hortonworks.com:50070')
 
-consumer = KafkaConsumer("sio-topic", bootstrap_servers='localhost:9092', group_id='python')
+consumer = KafkaConsumer("ratp-api", bootstrap_servers='localhost:9092', group_id='python')
 
 records = json.loads('[{}]')
 
