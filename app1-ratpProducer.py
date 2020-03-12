@@ -1,6 +1,8 @@
 import requests
 from kafka import KafkaProducer
 import json
+import csv
+
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
 def get_tok():
@@ -21,7 +23,15 @@ token = get_tok()
 
 url = 'https://traffic.api.iledefrance-mobilites.fr/v1/tr-unitaire/stop-monitoring'
 
-paramsList = ['STIF:StopPoint:Q:41160:', 'STIF:StopPoint:Q:41233:']
+paramsList = []
+
+with open('hadoopProject/references.csv') as csv_file:
+	csv_reader = csv.DictReader(csv_file, delimiter=';')
+	for row in csv_reader:
+		paramsList.append(row['MonitoringRef_ZDE'])
+
+
+
 headers = { 'Accept-Encoding' : 'gzip', 'Authorization' : 'Bearer ' + token }
 
 for i in paramsList:
