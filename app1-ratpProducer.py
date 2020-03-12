@@ -25,7 +25,7 @@ url = 'https://traffic.api.iledefrance-mobilites.fr/v1/tr-unitaire/stop-monitori
 
 paramsList = []
 
-with open('hadoopProject/references.csv') as csv_file:
+with open('/usr/hdp/current/kafka-broker/hadoopProject/references.csv') as csv_file:
 	csv_reader = csv.DictReader(csv_file, delimiter=';')
 	for row in csv_reader:
 		paramsList.append(row['MonitoringRef_ZDE'])
