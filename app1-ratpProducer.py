@@ -34,7 +34,7 @@ with open('/usr/hdp/current/kafka-broker/hadoopProject/references.csv') as csv_f
 
 
 headers = { 'Accept-Encoding' : 'gzip', 'Authorization' : 'Bearer ' + token }
-for i  in range(288):
+for i  in range(479):
     for i in paramsList:
         response = requests.get(url, params={'MonitoringRef': i}, headers=headers)
 	if response.status_code != 200:
