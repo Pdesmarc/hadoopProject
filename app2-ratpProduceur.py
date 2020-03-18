@@ -5,8 +5,8 @@ producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
 def get_tok():
 	urlOAuth = 'https://as.api.iledefrance-mobilites.fr/api/oauth/token' 
-	client_id='cd42b13f-9cd0-4204-9f8a-2f5976cf8c71' 
-	client_secret='f0c32a8c-7f4b-48e8-8db9-f2bcb07b0c0a'
+	client_id='a636e4c2-afae-4905-afe5-84b7c326f362' 
+	client_secret='5ad70c24-431c-4ad4-b16f-0b5de340bfcd'
 	data =dict(grant_type='client_credentials', scope='read-data', client_id=client_id, client_secret=client_secret)
 	response = requests.post(urlOAuth, data=data) 
 	print(response.json)

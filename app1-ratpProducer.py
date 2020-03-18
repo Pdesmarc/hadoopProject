@@ -2,18 +2,19 @@ import requests
 from kafka import KafkaProducer
 import json
 import csv
+import time
 
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 
 def get_tok():
 	urlOAuth = 'https://as.api.iledefrance-mobilites.fr/api/oauth/token' 
-	client_id='f2c9279f-772a-427b-a63f-d0205dc69557' 
-	client_secret='b2c1b99a-c645-4825-8569-47d7f97cda26'
+	client_id='a636e4c2-afae-4905-afe5-84b7c326f362' 
+	client_secret='5ad70c24-431c-4ad4-b16f-0b5de340bfcd'
 	data =dict(grant_type='client_credentials', scope='read-data', client_id=client_id, client_secret=client_secret)
 	response = requests.post(urlOAuth, data=data) 
 	print(response.json)
 	if response.status_code != 200: 
-		print('Status:', response.status_code, 'Erreur sur la requete; fin de programme')
+		print('Status:', response.status_code, 'Erreur sur la requete token; fin de programme')
 		exit()
 	jsonData = response.json() 
 	return jsonData['access_token']
@@ -33,12 +34,13 @@ with open('/usr/hdp/current/kafka-broker/hadoopProject/references.csv') as csv_f
 
 
 headers = { 'Accept-Encoding' : 'gzip', 'Authorization' : 'Bearer ' + token }
-
-for i in paramsList:
-	response = requests.get(url, params={'MonitoringRef': i}, headers=headers)
+for i  in range(288):
+    for i in paramsList:
+        response = requests.get(url, params={'MonitoringRef': i}, headers=headers)
 	if response.status_code != 200:
-		print('Status:', response.status_code, 'Erreur sur la requete; fin de programme')
-		exit()
+            print('Status:', response.status_code, 'Erreur sur la requete response; fin de programme')
+            exit()
 	jsonData = response.json()
 	producer.send('ratp-api', json.dumps(jsonData))
 	producer.flush()
+    time.sleep(180)
