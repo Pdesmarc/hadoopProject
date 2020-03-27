@@ -8,5 +8,8 @@ LY Stéphane,
 NGBANGO Soulémanou,
 RHERMINI Acheq
 
+# Installation : 
 
-
+1) Installer HDP sur sa machine 
+2) S'y connecter en SSH
+3) Cloner ce repository dans Kafka Broker
