@@ -20,4 +20,4 @@ RHERMINI Acheq
 8) Cloner ce repository dans /usr/hdp/current/KafkaBroker
 9) ...
 
-Note : afin de pouvoir se connecter à HDFS et faire les reqûetes avec Tableau, un plugin spécifique peut être nécessaire : https://www.cloudera.com/downloads/hdp.html
+Note : afin de pouvoir se connecter à HDFS et faire les requêtes avec Tableau, un plugin spécifique peut être nécessaire : https://www.cloudera.com/downloads/hdp.html
