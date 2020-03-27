@@ -12,4 +12,4 @@ RHERMINI Acheq
 
 1) Installer HDP sur sa machine 
 2) S'y connecter en SSH
-3) Cloner ce repository dans Kafka Broker
+3) Cloner ce repository dans /usr/hdp/current/KafkaBroker
